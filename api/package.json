@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon api.js",
+    "doc": "apidoc -o public/generated-docs/ -e node_modules/ -i ./"
+  },
+  "author": "madhavendu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "apidoc": "^0.54.0",
+    "nodemon": "^2.0.21"
+  }
+}

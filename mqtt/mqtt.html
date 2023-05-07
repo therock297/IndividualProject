@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temperature Sensor Data</title>
+    <!-- Import Highcharts library -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="chart-container"></div>
+
+    <script>
+     // Fetch data from server
+// Fetch data from server
+fetch('http://localhost:5001/sensor-data')
+  .then(response => response.json())
+  .then(data => {
+    if (!data || !Array.isArray(data)) {
+      console.log('Invalid data received from server');
+      return;
+    }
+
+    const chartData = data
+      .filter(item => item.timestamp && item.value)
+      .map(item => [item.timestamp, item.value]);
+
+    // Create chart
+    Highcharts.chart('chart-container', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Real-time Temperature Readings'
+      },
+      xAxis: {
+        type: 'datetime',
+        title: {
+          text: 'Time'
+        }
+      },
+      yAxis: {
+        title: {
+          text: 'Temperature (°C)'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      series: [{
+        name: 'Temperature',
+        data: chartData,
+        color: 'red'
+      }],
+      plotOptions: {
+        column: {
+          animation: true,
+          colorByPoint: true,
+          colors: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845'],
+        },
+      },
+      credits: {
+        enabled: false
+      }
+    });
+  })
+  .catch(error => {
+    console.log('Error fetching data from server:', error);
+  });
+
+
+
+    </script>
+  </body>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+</html>

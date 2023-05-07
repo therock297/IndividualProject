@@ -1,0 +1,1 @@
+const Arduinosensor= require('./models/arduinosensor');

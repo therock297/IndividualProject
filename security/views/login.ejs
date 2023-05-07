@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <!-- Add Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-VsPvNDsKlEu7dEdJ0lWk8RTvzI1Lxl7T0oQ2zW7IuGQZzN7VhSXYR32W8/4F0yqX7PbO4M76p8lZ5Y5q3fKZ6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= messages.error %>
+        </div>
+      <% } %>
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register" class="btn btn-link">Register</a>
+    </div>
+    <!-- Add Bootstrap JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-U0AxtZExAGLLdGK0osSHl0Ke8qxJyfdXm1plEheqw+/5+mOZzv5Y3qVLbnO+v5r6hGfu6vPQ6XKM7BdRNLWjVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
